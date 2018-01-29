@@ -28,15 +28,16 @@ f<-mutate(f, DateTimeCol = strptime(paste(f$Date, f$Time, sep=" "),"%d/%m/%Y %H:
 
 #Plot4
 
-par(mfrow=c(2,2))
+png(file = "plot4.png",  width= 480, height=480)
 
+par(mfrow=c(2,2))
 plot(f$DateTimeCol, f$Global_active_power, col= "black",
      type= "l",
      xlab = "", ylab="Global Active Power", main="")
 
 plot(f$DateTimeCol, f$Voltage, col= "black",
      type= "l",
-     xlab = "datetime", ylab="", main="")
+     xlab = "datetime", ylab="Voltage", main="")
 
 plot( f$DateTimeCol, f$Sub_metering_1,type= "n",
       xlab = "", ylab="Energy sub metering", main = "")
@@ -51,6 +52,5 @@ plot(f$DateTimeCol, f$Global_reactive_power, col= "black",
      type= "l",
      xlab = "datetime", ylab="Global_reactive_power", main="")
 
-dev.copy(png, file = "plot4.png",  width= 480, height=480)
 dev.off()
 
